@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Меню Игры</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color:'#f0f0f0';
+        }
+        h1 {
+            color: 'black';
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Выберите режим игры:</h1>
+    
+    <button id="mode1">Режим 1 (Классика)</button>
+    <button id="mode2">Режим 2 (Подлый гриб)</button>
+    <button id="mode3">Режим 3 (Для двоих)</button>
+
+    <script>
+        document.getElementById('mode1').addEventListener('click', function() {
+            window.location.href = 'index1.html';
+        });
+        
+        document.getElementById('mode2').addEventListener('click', function() {
+            window.location.href = 'index2.html';
+        });
+        document.getElementById('mode3').addEventListener('click', function() {
+            window.location.href = 'index3.html';
+        });
+    </script>
+    <h2>Важно:</h2>
+    <h3>Для выхода из игры в меню удерживайте ESCAPE</h3>
+    <h3>Для запуска новой игры в режиме нажмите ENTER</h3>
+</body>
+</html>
