@@ -56,7 +56,7 @@ function drawBackground() {
 }
 
 function drawFrame() {
-    canvasContext.fillStyle = '#B1F6BD';
+    canvasContext.fillStyle = '#476942';
     canvasContext.fillRect(0,0,GAME.width,GAME.cellSize * 2);
     canvasContext.fillRect(0,0,GAME.cellSize * 2,GAME.height);
     canvasContext.fillRect(0,GAME.height - GAME.cellSize * 2, GAME.width, GAME.cellSize *2);
@@ -77,7 +77,7 @@ function drawScore1() {
 function drawScore2() {
     canvasContext.font = "48px serif";
     canvasContext.fillStyle = 'blue';
-    canvasContext.fillText("Score1: " + SNAKE2.score, 10, 50);
+    canvasContext.fillText("Score1: " + SNAKE2.score, 62, 50);
 }
 
 function drawGrid() {
@@ -316,19 +316,19 @@ function onCanvasKeyDown(event) {
         SNAKE1.yDir = SNAKE1.speed;
         SNAKE1.xDir = 0;
     }
-    if (event.key === 'a' && SNAKE2.xDir === 0) {
+    if (event.code === 'KeyA' && SNAKE2.xDir === 0) {
         SNAKE2.xDir = -SNAKE2.speed;
         SNAKE2.yDir = 0;
     }
-    if (event.key === 'd' && SNAKE2.xDir === 0) {
+    if (event.code === 'KeyD' && SNAKE2.xDir === 0) {
         SNAKE2.xDir = SNAKE2.speed;
         SNAKE2.yDir = 0;
     }
-    if (event.key === 'w' && SNAKE2.yDir === 0) {
+    if (event.code === 'KeyW' && SNAKE2.yDir === 0) {
         SNAKE2.yDir = -SNAKE2.speed;
         SNAKE2.xDir = 0;
     }
-    if (event.key === 's' && SNAKE2.yDir === 0) {
+    if (event.code === 'KeyS' && SNAKE2.yDir === 0) {
         SNAKE2.yDir = SNAKE2.speed;
         SNAKE2.xDir = 0;
     }    
