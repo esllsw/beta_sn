@@ -218,7 +218,6 @@ function onCanvasKeyDown(event) {
     if (event.key === "Escape") {
         clearInterval(intervalId);
         window.parent.location.href = './index.html';
-        console.log('aaaaaSAAAA')
     }
 }
 
