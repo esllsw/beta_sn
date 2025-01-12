@@ -238,6 +238,27 @@ function tailSnake2(){
     })
 }
 
+function checkCollision() { //проверка на столкновение змей
+    SNAKE1.tail.forEach(function(cell1) {
+        SNAKE2.tail.forEach(function(cell2) {
+            if (cell1.x === cell2.x && cell1.y === cell2.y) {
+                gameOver = true;
+                soundFail();
+            }
+        });
+    });
+    
+    SNAKE2.tail.forEach(function(cell2) {
+        SNAKE1.tail.forEach(function(cell1) {
+            if (cell1.x === cell2.x && cell1.y === cell2.y) {
+                gameOver = true;
+                soundFail();
+            }
+        });
+    });
+}
+
+
 function updateSnake() {
 
     if (gameOver) 
@@ -253,6 +274,7 @@ function updateSnake() {
 
     tailSnake1();
     tailSnake2();
+    checkCollision()
 
     drawScore1();
     drawScore2();
@@ -276,69 +298,6 @@ function updateSnake() {
     }
     
 }
-
-// function updateSnake() {
-
-//     if (gameOver) 
-//         return;
-//     canvasContext.clearRect(0, 0, GAME.width, GAME.height);
-//     drawBackground();
-//     drawGrid();
-//     drawScore1();
-//     drawScore2();
-//     for (var i = 0; i < 2; i++){
-//         SNAKE[i].x += SNAKE[i].xDir;
-//         SNAKE[i].y += SNAKE[i].yDir;
-//         if (SNAKE[i].x < 0) {
-//             SNAKE[i].x = GAME.width - GAME.cellSize;
-//         }
-//         else if (SNAKE[i].x >= GAME.width) {
-//             SNAKE[i].x = 0;
-//         }
-//         if (SNAKE[i].y < 0) {
-//             SNAKE[i].y = GAME.height - GAME.cellSize;
-//         }
-//         else if (SNAKE[i].y >= GAME.height) {
-//             SNAKE[i].y = 0;
-//         }
-    
-//         SNAKE[i].tail.unshift({ x: SNAKE[i].x, y: SNAKE[i].y });
-//         if (SNAKE[i].tail.length > SNAKE[i].maxTail) {
-//             SNAKE[i].tail.pop();
-//         }
-    
-//         drawApple();
-    
-//         canvasContext.fillStyle = 'black';
-//         SNAKE.tail.forEach(function (cell, index) {
-//             canvasContext.fillRect(cell.x, cell.y, GAME.cellSize - 1, GAME.cellSize - 1);
-//             if (cell.x === APPLE.x && cell.y === APPLE.y) {
-//                 SNAKE[i].maxTail += 1;
-//                 SNAKE[i].score += 1;
-//                 APPLE.x = randomInt(0, 25) * GAME.cellSize;
-//                 APPLE.y = randomInt(0, 25) * GAME.cellSize;
-//                 soundApple();
-//             }
-    
-//             for (var z = index + 1; z < SNAKE.tail.length; z++) {
-//                 if (cell.x === SNAKE.tail[z].x && cell.y === SNAKE.tail[z].y) {
-//                     gameOver = true;
-//                     soundFail();
-//                     break;
-//                 }
-//             }
-//         })
-//     }
-//     if (gameOver) {
-//         drawBackground();
-//         canvasContext.font = '48px Arial';
-//         canvasContext.textAling = 'center';
-//         canvasContext.fillStyle = 'blue';
-//         //        canvasContext.fillText('You Lose\nYour Score: ' + SNAKE.score, 50, GAME.height / 2);
-//         canvasContext.fillText('You lose', GAME.width / 2, GAME.height / 2);
-//         canvasContext.fillText('Your score: ' + SNAKE.score, 200, 350);
-//     }
-// }
 
 function onCanvasKeyDown(event) {
     if (event.key === 'ArrowLeft' && SNAKE1.xDir === 0) {
